@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Transport Trip Manager</title>
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+</head>
+
+<body>
+
+<h1>Transport Trip Manager</h1>
+
+<!-- TOGGLE MENU -->
+
+<div class="menu">
+
+<button onclick="showSection('addTrip')">Add Trip</button>
+<button onclick="showSection('tripData')">Trip Data</button>
+<button onclick="showSection('received')">Received Payments</button>
+<button onclick="showSection('due')">Due Payments</button>
+
+</div>
+
+
+<!-- ADD TRIP SECTION -->
+
+<div id="addTrip" class="section">
+
+<h2>Add Trip</h2>
+
+<form id="tripForm">
+
+<label>Transporter</label>
+<select id="transporter">
+<option>Andal Logistics</option>
+<option>EFC Logistics</option>
+</select>
+
+<label>Vehicle Number</label>
+<select id="truckNumber">
+<option>1982</option>
+<option>8218</option>
+</select>
+
+<label>Loading Date</label>
+<input type="date" id="loadingDate" required>
+
+<label>Unloading Date</label>
+<input type="date" id="unloadingDate" required>
+
+<label>Loading Point</label>
+<select id="loadingPoint">
+<option>Sanikpur</option>
+<option>RP Shaw</option>
+</select>
+
+<label>Unloading Point</label>
+<select id="unloadingPoint">
+<option>Chiliyama</option>
+<option>Sinni</option>
+</select>
+
+<label>Weight Loaded</label>
+<input type="number" id="weightLoaded" step="any">
+
+<label>Weight Delivered</label>
+<input type="number" id="weightDelivered" step="any">
+
+<label>Shortage</label>
+<input type="number" id="shortage" readonly>
+
+<label>Freight Rate (₹ per Ton)</label>
+<input type="number" id="ratePerTon" step="any">
+
+<label>Freight Amount</label>
+<input type="number" id="freightAmount" readonly>
+
+<label>Shortage Rate (₹ per Kg)</label>
+<input type="number" id="shortageRate" step="any">
+
+<label>Shortage Amount</label>
+<input type="number" id="shortageAmount" readonly>
+
+<label>Diesel Expense</label>
+<input type="number" id="diesel" step="any">
+
+<label>Driver Expense</label>
+<input type="number" id="driver" step="any">
+
+<button type="submit">Add Trip</button>
+
+</form>
+
+</div>
+
+
+
+<!-- TRIP DATA -->
+
+<div id="tripData" class="section" style="display:none">
+
+<h2>Trip Records</h2>
+
+<table id="tripTable">
+
+<thead>
+
+<tr>
+
+<th>Loading Date</th>
+<th>Unloading Date</th>
+<th>Transporter</th>
+<th>Vehicle</th>
+<th>Loading</th>
+<th>Unloading</th>
+<th>Loaded</th>
+<th>Delivered</th>
+<th>Shortage</th>
+<th>Rate/Ton</th>
+<th>Freight</th>
+<th>Shortage Rate</th>
+<th>Shortage Amount</th>
+<th>Diesel</th>
+<th>Driver</th>
+<th>Total Expense</th>
+<th>Payment</th>
+
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+<br>
+
+<button onclick="downloadExcel()">Download Excel</button>
+<button onclick="resetAllData()">Reset All Data</button>
+
+</div>
+
+
+
+<!-- RECEIVED PAYMENTS -->
+
+<div id="received" class="section" style="display:none">
+
+<h2>Received Payments</h2>
+
+<table id="receivedTable">
+
+<thead>
+
+<tr>
+<th>Vehicle</th>
+<th>Route</th>
+<th>Freight</th>
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+
+
+<!-- DUE PAYMENTS -->
+
+<div id="due" class="section" style="display:none">
+
+<h2>Due Payments</h2>
+
+<table id="dueTable">
+
+<thead>
+
+<tr>
+<th>Vehicle</th>
+<th>Route</th>
+<th>Freight</th>
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
